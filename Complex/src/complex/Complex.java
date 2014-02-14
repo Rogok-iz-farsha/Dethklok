@@ -4,7 +4,7 @@ package complex;
  *
  * @author Alex
  */
-public class Complex {
+ class Complex {
     private double a,b;
     static int i=0;
      Complex(){    //конструктор без аргументов
@@ -43,6 +43,9 @@ public class Complex {
      public String toString (){
          return String.valueOf (a) + " + " + b + "*i";
      }
+}
+
+class Demo {
     public static void main(String[] args) {
         Complex chislo = new Complex();
         System.out.println ("ComplextNumber class demo");
