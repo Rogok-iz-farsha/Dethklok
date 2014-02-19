@@ -12,6 +12,7 @@ public class VecGo {
     System.out.println ("(" + v1 + ") - (" + v2 + ") = " + v1.subtruct (v2));
     System.out.println ("(" + v1 + ") * ("+l+") = " + v1.multiply_const(l));
     System.out.println ("[v1,v2] = " + v1.multiply_vec(v2));
+    System.out.println ((v1.equals(v2)) ? "c1=c2" : "c1 != c2");
     //System.out.println ("(v1,v2) = " + scalar(v1,v2));    Ошибки
     //System.out.println ("Cos(v1,v2) = " + cos(v1,v2));   
     
