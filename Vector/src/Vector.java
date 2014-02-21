@@ -41,16 +41,16 @@ public class Vector {
         return new Vector(x * a, y * a, z * a);                      //Умножение вектора на число
     }
 
-    public double scalar(Vector other) {               //Скалярное умножение векторов
+    public double multiplyScalar(Vector other) {               //Скалярное умножение векторов
         return (this.x * other.x + this.y * other.y + this.z * other.z);
     }
 
-    public Vector multiply_vec(Vector other) {
+    public Vector multiplyVector(Vector other) {
         return new Vector(y * other.z - other.y * z, other.x * z - x * other.z, x * other.y - other.x * x);    // Векторное умножение
     }
 
     public double cos(Vector other) {
-        return (this.scalar(other) / (lenght(this) * lenght(other)));                  //Косинус угла между векторами
+        return (this.multiplyScalar(other) / (lenght(this) * lenght(other)));                  //Косинус угла между векторами
     }
 
     @Override
