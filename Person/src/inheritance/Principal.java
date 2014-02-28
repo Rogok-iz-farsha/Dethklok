@@ -9,8 +9,8 @@ public class Principal extends Tutor {
     public Principal() {
     }
 
-    public Principal(String firstName, String lastName, int day, int month, int year) {
-        super(firstName, lastName, day, month, year);
+    public Principal(String firstName, String lastName) {
+        super(firstName, lastName);
     }
 
     @Override

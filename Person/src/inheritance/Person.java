@@ -7,17 +7,14 @@ package inheritance;
 public class Person {
 
     private String firstName, lastName;
-    private int day, month, year;
+    private Date date;
 
     public Person() {
     }
 
-    public Person(String firstName, String lastName, int day, int month, int year) {
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.day = day;
-        this.month = month;
-        this.year = year;
 
     }
 
@@ -37,9 +34,12 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
-        return (firstName == null ? "" : firstName + " ") + (lastName == null ? "" : lastName)
-                + String.valueOf(". Date: " + day + "." + month + "." + year);
+        return (firstName == null ? "" : firstName + " ") + (lastName == null ? "" : lastName);
     }
 }

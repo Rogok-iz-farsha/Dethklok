@@ -9,8 +9,8 @@ public class Tutor extends Person {
     public Tutor() {
     }
 
-    public Tutor(String firstName, String lastName, int day, int month, int year) {
-        super(firstName, lastName, day, month, year);
+    public Tutor(String firstName, String lastName) {
+        super(firstName, lastName);
     }
 
     @Override

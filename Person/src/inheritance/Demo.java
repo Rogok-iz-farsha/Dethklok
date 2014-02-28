@@ -7,15 +7,19 @@ package inheritance;
 public class Demo {
 
     public static void main(String[] args) {
-        Student studentA = new Student("Petr", "Ivanov", 9, 8, 94);
-        Student studentB = new Student("Ivan", "Popov", 15, 6, 93);
-        Headman studentC = new Headman("Pavlic", "Morozov", 15, 10, 94);
-        Principal tutor1 = new Principal("Vasily", "Sidorov", 21, 12, 85);
+        Student studentA = new Student("Petr", "Ivanov");
+        Student studentB = new Student("Ivan", "Popov");
+        Headman studentC = new Headman("Pavlic", "Morozov");
+        Principal tutor1 = new Principal("Vasily", "Sidorov");
+        Date d = new Date(96,10,15);
+        studentA.setDate(d);
 
-        Student studentD = new Student("Irina", "Grishko", 5, 2, 96);
-        Student studentG = new Student("Alex", "Limoskin", 4, 7, 95);
-        Headman studentF = new Headman("Don", "Khiton", 30, 1, 95);
-        Tutor tutor2 = new Tutor("Sergey", "Ignatovich", 28, 8, 84);
+        Student studentD = new Student("Irina", "Grishko");
+        Student studentG = new Student("Alex", "Limoskin");
+        Headman studentF = new Headman("Don", "Khiton");
+        Tutor tutor2 = new Tutor("Sergey", "Ignatovich");
+        
+        
 
         System.out.println("Students:\n" + studentA + "\n" + studentB + "\n" + studentC);
         System.out.println("Tutor: " + tutor1 + "\n");
@@ -31,8 +35,8 @@ public class Demo {
         studentD.setGroup(group2);
         studentG.setGroup(group2);
         studentF.setGroup(group2);
-        studentA.setSrBal(4.8);
-        studentB.setSrBal(5.0);
+        studentA.setScore(4.8);
+        studentB.setScore(5.0);
 
         Person[] persons = new Person[]{tutor1, studentA, studentB, studentC, tutor2, studentD, studentF, studentG};
         System.out.println("Persons:");

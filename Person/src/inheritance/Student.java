@@ -12,8 +12,8 @@ public class Student extends Person {
     public Student() {
     }
 
-    public Student(String firstName, String lastName, int day, int month, int year) {
-        super(firstName, lastName, day, month, year);
+    public Student(String firstName, String lastName) {
+        super(firstName, lastName);
     }
 
     public Group getGroup() {
@@ -24,12 +24,12 @@ public class Student extends Person {
         this.group = group;
     }
 
-    public void setSrBal(double a) {
+    public void setScore(double a) {
         this.score = a;
     }
 
     @Override
     public String toString() {
-        return super.toString() + (group == null ? "" : " (group #" + group + "") + String.valueOf(score == 0 ? ")" : (";  Score = " + score + " )"));
+        return super.toString() + (group == null ? "" : " group #" + group + "") + String.valueOf(score == 0 ? "" : (";  Score = " + score + " "));
     }
 }

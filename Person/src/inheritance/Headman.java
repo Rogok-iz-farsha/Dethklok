@@ -9,8 +9,8 @@ public class Headman extends Student {
     public Headman() {
     }
 
-    public Headman(String firstName, String lastName, int day, int month, int year) {
-        super(firstName, lastName, day, month, year);
+    public Headman(String firstName, String lastName) {
+        super(firstName, lastName);
     }
 
     @Override
