@@ -45,6 +45,6 @@ public class Person {
     @Override
     public String toString() {
         return (firstName == null ? "" : firstName + " ") + (lastName == null ? "" : lastName)
-                + String.valueOf(date == null ? "" : ". Date: "+dt.format(date)+".");
+                + (date == null ? "" : ". Date: "+dt.format(date)+".");
     }
 }

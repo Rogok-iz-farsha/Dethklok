@@ -32,6 +32,6 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return super.toString() + (group == null ? "" : " group #" + group + "") + String.valueOf(score == 0 ? "" : (";  Score = " + score + " "));
+        return super.toString() + (group == null ? "" : " group #" + group + "") + (score == 0 ? "" : (";  Score = " + score + " "));
     }
 }
