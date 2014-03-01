@@ -1,5 +1,8 @@
 package inheritance;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author AlexRoz
@@ -11,15 +14,21 @@ public class Demo {
         Student studentB = new Student("Ivan", "Popov");
         Headman studentC = new Headman("Pavlic", "Morozov");
         Principal tutor1 = new Principal("Vasily", "Sidorov");
-        Date d = new Date(96,10,15);
-        studentA.setDate(d);
+
+      
 
         Student studentD = new Student("Irina", "Grishko");
         Student studentG = new Student("Alex", "Limoskin");
         Headman studentF = new Headman("Don", "Khiton");
         Tutor tutor2 = new Tutor("Sergey", "Ignatovich");
-        
-        
+
+        studentA.setDate(new Date(96, 1, 8));
+        studentB.setDate(new Date(96, 2, 9));
+        studentC.setDate(new Date(95, 3, 10));
+        studentD.setDate(new Date(94, 4, 11));
+        studentF.setDate(new Date(96, 5, 12));
+        studentG.setDate(new Date(95, 6, 13));
+        tutor1.setDate(new Date(85, 7, 15));
 
         System.out.println("Students:\n" + studentA + "\n" + studentB + "\n" + studentC);
         System.out.println("Tutor: " + tutor1 + "\n");

@@ -15,6 +15,6 @@ public class Tutor extends Person {
 
     @Override
     public String toString() {
-        return super.toString() + " - Teacher";
+        return super.toString() + "  Teacher";
     }
 }

@@ -1,5 +1,7 @@
 package inheritance;
 
+import java.util.Date;
+
 /**
  *
  * @author AlexRoz

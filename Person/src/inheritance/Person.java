@@ -1,5 +1,8 @@
 package inheritance;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author AlexRoz
@@ -8,6 +11,7 @@ public class Person {
 
     private String firstName, lastName;
     private Date date;
+    SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 
     public Person() {
     }
@@ -40,6 +44,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return (firstName == null ? "" : firstName + " ") + (lastName == null ? "" : lastName);
+        return (firstName == null ? "" : firstName + " ") + (lastName == null ? "" : lastName)
+                + String.valueOf(date == null ? "" : ". Date: "+dt.format(date)+".");
     }
 }

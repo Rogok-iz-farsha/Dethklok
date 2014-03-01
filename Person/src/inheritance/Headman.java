@@ -15,6 +15,6 @@ public class Headman extends Student {
 
     @Override
     public String toString() {
-        return super.toString() + " - Headman";
+        return super.toString() + "  Headman";
     }
 }
