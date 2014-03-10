@@ -15,7 +15,7 @@ public class ImageMover extends Thread
 	private int width = 0, height = 0;
 	private Point position = new Point ();
 	private int vx = 0, vy = 0;
-        double timeIn=System.currentTimeMillis();
+       
         
 
 	public ImageMover (JComponent component)
@@ -40,14 +40,13 @@ public class ImageMover extends Thread
 		return new Point (position);
 	}
 
-	private Point calculateNewPosition ()
-	{      double timeOut=System.currentTimeMillis();
-               double delta=timeIn-timeOut;
+	private Point calculateNewPosition (long dtime)
+	{      
                
 		Point newPos = new Point (position);
                 
-		newPos.x += vx*delta/10;
-		newPos.y += vy*delta/10;
+		newPos.x += vx*dtime/10;
+		newPos.y += vy*dtime/10;
                 timeIn=timeOut;
 		if (newPos.x < 0)
 		{
@@ -86,10 +85,10 @@ public class ImageMover extends Thread
 
 	@Override
 	public void run ()
-	{
+	{       long time=System.currentTimeMillis();
 		while (!Thread.interrupted ())
-		{
-			stepOver ();
+		{       long newTime=System.currentTimeMillis();
+			stepOver (newTime-time);
 			try{
 				Thread.sleep (20L);
                                 
