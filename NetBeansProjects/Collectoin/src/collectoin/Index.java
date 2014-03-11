@@ -45,7 +45,7 @@ public class Index implements Comparable<Index> {
         if (index != other.index) {
             return false;
         }
-        if (value != other.value) {
+        if (value.equals(other.value)==false) {
             return false;
         }
         return true;
