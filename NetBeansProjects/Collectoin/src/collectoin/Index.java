@@ -45,25 +45,25 @@ public class Index implements Comparable<Index> {
         if (index != other.index) {
             return false;
         }
-        if (value != other.value) {
-            return false;
-        }
-        return true;
+        return !(value == null ? other.value != null : !value.equals(other.value));
     }
 
     @Override
     public int compareTo(Index other) {
-        if (value != null && other.value != null) {
+        try {
             if (index == other.index && value.compareTo(other.value) == 0) {
                 return 0;
             }
-            if (index == other.index && value.compareTo(other.value) > 0) {
+            if (index > other.index || index == other.index && value.compareTo(other.value) > 0) {
                 return 1;
             }
-            if (index == other.index && value.compareTo(other.value) < 0) {
+            if (index < other.index || index == other.index && value.compareTo(other.value) < 0) {
                 return -1;
             }
+
+        } catch (NullPointerException e) {
         }
-        return (index < other.index) ? -1 : 1;
+        return 0;
+
     }
 }
