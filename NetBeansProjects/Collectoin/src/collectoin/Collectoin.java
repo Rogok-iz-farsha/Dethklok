@@ -19,18 +19,18 @@ public class Collectoin {
     public static void main(String[] args) {
         final List<String> list1 = new ArrayList<>();
         final List<String> list2 = new ArrayList<>();
-        Time(list1,list2);   //
-        
+        new Time(list1,list2);   
+        System.out.print("\n");
 
         final Set<String> setOfStrings1 = new HashSet<>();
         final Set<String> setOfStrings2 = new HashSet<>();
-        Time(setOfStrings1,setOfStrings2);
-        
+        new Time(setOfStrings1,setOfStrings2);
+        System.out.print("\n");
         
         final Set<String> ordered1 = new TreeSet<>(setOfStrings1);
         final Set<String> ordered2 = new TreeSet<>(setOfStrings2);
-        Time(ordered1,ordered2);
-         
+        new Time(ordered1,ordered2);
+        
         
 
     }
