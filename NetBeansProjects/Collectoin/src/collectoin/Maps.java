@@ -40,5 +40,7 @@ public class Maps {
                 
 		final Map<Index, Long> orderedMap = new TreeMap<> (map);
 		System.out.println ("orderedMap = " + orderedMap); 
+                
+               
 }
 }

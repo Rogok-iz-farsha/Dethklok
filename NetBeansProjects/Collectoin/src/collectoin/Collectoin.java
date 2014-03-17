@@ -1,4 +1,5 @@
 package collectoin;
+import com.sun.org.apache.xalan.internal.lib.Extensions;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Collection;
@@ -41,6 +42,9 @@ public class Collectoin {
 
 		final Set<String> orderedSetOfStrings = new TreeSet<> (setOfStrings);
 		System.out.println ("orderedSetOfStrings = " + orderedSetOfStrings);
+                orderedSetOfStrings.retainAll(stillList);
+                System.out.println ("orderedSetOfStringsNEW = " + orderedSetOfStrings);
+       
     }
     
 }

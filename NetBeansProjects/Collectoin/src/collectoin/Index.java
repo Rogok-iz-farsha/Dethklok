@@ -1,4 +1,4 @@
-﻿package collectoin;
+package collectoin;
 
 /**
  *
@@ -45,27 +45,29 @@ public class Index implements Comparable<Index> {
         if (index != other.index) {
             return false;
         }
-<<<<<<< HEAD
+
         return !(value == null ? other.value != null : !value.equals(other.value));
->>>>>>> ce236f61dc416e0c365fb9df7b5ce6bcaa1448f1
+
     }
 
     @Override
     public int compareTo(Index other) {
-        try {
-            if (index == other.index && value.compareTo(other.value) == 0) {
-                return 0;
-            }
-            if (index > other.index || index == other.index && value.compareTo(other.value) > 0) {
-                return 1;
-            }
-            if (index < other.index || index == other.index && value.compareTo(other.value) < 0) {
-                return -1;
-            }
-
-        } catch (NullPointerException e) {
+        if(value==null && other.value==null){
+            if(index==other.index) return 0;
+            if(index>other.index) return 1;
+            if(index<other.index) return -1;
         }
+        
+        if(value!=null && other.value==null)
+            return -1;
+        
+        if(value==null && other.value!=null) 
+            return 1;
+         if(value!=null && other.value!=null){
+             if(index==other.index && value.equals(other.value)==true) return 0;
+             if(index>other.index || index==other.index && value.compareTo(other.value)>0) return 1;
+             if(index<other.index || index==other.index && value.compareTo(other.value)<0) return -1;
+         }   
         return 0;
-
-    }
+      }
 }
