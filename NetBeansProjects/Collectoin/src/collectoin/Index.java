@@ -52,22 +52,20 @@ public class Index implements Comparable<Index> {
 
     @Override
     public int compareTo(Index other) {
-        if(value==null && other.value==null){
-            if(index==other.index) return 0;
-            if(index>other.index) return 1;
-            if(index<other.index) return -1;
+        if (index == other.index) {
+            if (value != null && other.value != null) {
+                return value.compareTo(other.value);
+            }
+            if (value != null && other.value == null) {
+                return 1;
+            }
+            if (value == null && other.value != null) {
+                return -1;
+            }
+            if (value == null && other.value == null) {
+                return 0;
+            }
         }
-        
-        if(value!=null && other.value==null)
-            return -1;
-        
-        if(value==null && other.value!=null) 
-            return 1;
-         if(value!=null && other.value!=null){
-             if(index==other.index && value.equals(other.value)==true) return 0;
-             if(index>other.index || index==other.index && value.compareTo(other.value)>0) return 1;
-             if(index<other.index || index==other.index && value.compareTo(other.value)<0) return -1;
-         }   
-        return 0;
-      }
+        return (index > other.index) ? 1 : -1;
+    }
 }
