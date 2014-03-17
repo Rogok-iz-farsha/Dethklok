@@ -5,9 +5,8 @@
  */
 
 package collectoin;
-
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -15,7 +14,7 @@ import java.util.TreeSet;
  * @author Александр
  */
 public class Time {
-    public Time(ArrayList<String> list1,ArrayList<String> list2){
+    public Time(List<String> list1,List<String> list2){
       for(int i=0;i<25000;i++){
        String rand1 = Double.toString(Math.random() * 1000);
        String rand2 = Double.toString(Math.random() * 1000);
@@ -28,7 +27,7 @@ public class Time {
       System.out.print("Time ArrayList = " + delta);
     }
     
-     public Time(HashSet<String> hash1,HashSet<String> hash2){
+     public Time(Set<String> hash1,Set<String> hash2){
       for(int i=0;i<25000;i++){
        String rand1 = Double.toString(Math.random() * 1000);
        String rand2 = Double.toString(Math.random() * 1000);

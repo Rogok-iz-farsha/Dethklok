@@ -1,6 +1,6 @@
 package collectoin;
 
-import com.sun.org.apache.xalan.internal.lib.Extensions;
+//import com.sun.org.apache.xalan.internal.lib.Extensions;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Collection;
@@ -15,13 +15,11 @@ import java.util.TreeSet;
  */
 public class Collectoin {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
         final List<String> list1 = new ArrayList<>();
         final List<String> list2 = new ArrayList<>();
-        Time(list1,list2);
+        Time(list1,list2);   //
         
 
         final Set<String> setOfStrings1 = new HashSet<>();
@@ -36,5 +34,8 @@ public class Collectoin {
         
 
     }
+
+
+    
 
 }
