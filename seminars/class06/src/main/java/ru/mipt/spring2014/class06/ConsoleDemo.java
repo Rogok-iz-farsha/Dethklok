@@ -15,17 +15,19 @@ public class ConsoleDemo {
             String line = stdIn.readLine();
             char c = 0;
             if (line.length() != 0) {
-                c = line.toCharArray()[line.length() - 1];
+                c = line.charAt(line.length() - 1);
             }
 
-            if (c == '/') {
-                do {
+            while (c == '\\')
+                 {
                     line = line.concat("\n");
                     String newLine = stdIn.readLine();
-                    c = line.toCharArray()[newLine.length() - 1];
+                    if (newLine.length() != 0) {
+                        c = newLine.charAt(newLine.length() - 1);
+                    }
                     line = line.concat(newLine);
-                } while (c == '/');
-            }
+                } 
+            
             if ("exit".equalsIgnoreCase(line)) {
                 break;
             } else {
