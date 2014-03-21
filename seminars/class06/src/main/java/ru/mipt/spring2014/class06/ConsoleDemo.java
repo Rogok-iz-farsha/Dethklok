@@ -18,16 +18,16 @@ public class ConsoleDemo {
                 c = line.charAt(line.length() - 1);
             }
 
-            while (c == '\\')
-                 {
-                    line = line.concat("\n");
-                    String newLine = stdIn.readLine();
-                    if (newLine.length() != 0) {
-                        c = newLine.charAt(newLine.length() - 1);
-                    }
-                    line = line.concat(newLine);
-                } 
-            
+            while (c == '\\') 
+            {
+                line = line.substring(0, line.length() - 1);
+                line = line.concat("\n");
+                String newLine = stdIn.readLine();
+                if(0==newLine.length()) break;
+                c = newLine.charAt(newLine.length() - 1);
+                line = line.concat(newLine);
+            }
+
             if ("exit".equalsIgnoreCase(line)) {
                 break;
             } else {
