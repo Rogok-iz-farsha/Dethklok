@@ -23,16 +23,14 @@ public class Server implements Runnable
 	public void run() 
 	{
 		final ServerSocket socket;
-		final ExecutorService execSrv = Executors.newFixedThreadPool (1);
-		final int tasksNumber = 4;
-		final Future<Runnable>[] tasks = new Future[tasksNumber];
+		final ExecutorService execSrv = Executors.newFixedThreadPool (1);		
 		try{
 			System.out.println ("Server: Start accepting connections");
 			socket = new ServerSocket (port);
          
-			for(int i=0; i<tasksNumber; i++)
+			while(!Thread.interrupted ())
 		{
-			tasks[i] = (Future<Runnable>) execSrv.submit (new RequestHandler (socket.accept ()));
+			execSrv.submit (new RequestHandler (socket.accept ()));
 			System.out.println ("Server: Connection accepted");
 		}
 			
