@@ -1,6 +1,5 @@
 /**
- * RequestHandler.java
- * Created on Mar 24, 2014
+ * RequestHandler.java Created on Mar 24, 2014
  */
 package ru.mipt.spring2014.class07.net;
 
@@ -13,6 +12,7 @@ import java.net.Socket;
 
 public class RequestHandler implements Runnable
 {
+
 	private final Socket connection;
 
 	public RequestHandler (Socket connection)
@@ -20,9 +20,14 @@ public class RequestHandler implements Runnable
 		this.connection = connection;
 	}
 
+	
+
 	public void run ()
 	{
-		try{
+
+		try
+		{
+			connection.setTcpNoDelay (true);
 			final ObjectInputStream in = new ObjectInputStream (new BufferedInputStream (connection.getInputStream ()));
 			final ObjectOutputStream out = new ObjectOutputStream (new BufferedOutputStream (connection.getOutputStream ()));
 
@@ -35,7 +40,8 @@ public class RequestHandler implements Runnable
 			System.err.println ("Server: Error handling request: " + e);
 		} finally
 		{
-			try{
+			try
+			{
 				connection.close ();
 			} catch (IOException e)
 			{

@@ -13,9 +13,9 @@ public class ThreadDemo
 		sleeperA.start ();
 		sleeperB.start ();
 
-//		Thread.sleep (1258L);
-//		sleeperA.interrupt ();
-//		sleeperB.interrupt ();
+		Thread.sleep (1258L);
+		sleeperA.interrupt ();
+		sleeperB.interrupt ();
 
 		System.out.println ("main: end");
 	}

@@ -9,24 +9,31 @@ import java.io.InputStreamReader;
 
 public class ConsoleDemo {
 
+    public static String readCommand(BufferedReader stdIn) throws IOException {
+        String line = stdIn.readLine();
+        char c = 0;
+        if (!line.isEmpty()) {
+            c = line.charAt(line.length() - 1);
+        }
+
+        while (c == '\\') {
+            line = line.substring(0, line.length() - 1);
+            line = line.concat("\n");
+            String newLine = stdIn.readLine();
+            if (newLine.isEmpty()) {
+                break;
+            }
+            c = newLine.charAt(newLine.length() - 1);
+            line = line.concat(newLine);
+        }
+        return line;
+    }
+
     public static void main(String[] args) throws IOException {
         final BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-        for (;;) {
-            String line = stdIn.readLine();
-            char c = 0;
-            if (line.length() != 0) {
-                c = line.charAt(line.length() - 1);
-            }
 
-            while (c == '\\') 
-            {
-                line = line.substring(0, line.length() - 1);
-                line = line.concat("\n");
-                String newLine = stdIn.readLine();
-                if(0==newLine.length()) break;
-                c = newLine.charAt(newLine.length() - 1);
-                line = line.concat(newLine);
-            }
+        for (;;) {
+            String line = readCommand(stdIn);
 
             if ("exit".equalsIgnoreCase(line)) {
                 break;
@@ -35,5 +42,6 @@ public class ConsoleDemo {
             }
 
         }
+
     }
 }

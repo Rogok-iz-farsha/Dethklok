@@ -24,7 +24,7 @@ public class ExecutorsDemo
 		}
 		System.out.println ("main: all tasks created");
 
-//		execSrv.shutdown ();
+		execSrv.shutdownNow ();
 
 //		for (int i = 0; i < tasksNumber; i++)
 //		{

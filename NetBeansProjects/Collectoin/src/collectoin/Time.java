@@ -51,6 +51,6 @@ public class Time {
       long time=System.currentTimeMillis();
       tree1.retainAll(tree2);
       long delta=System.currentTimeMillis()-time;
-      System.out.print("Time HashSet = " + delta);
+      System.out.print("Time Tree = " + delta);
     } 
 }
