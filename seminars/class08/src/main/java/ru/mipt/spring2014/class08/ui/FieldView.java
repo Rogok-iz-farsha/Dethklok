@@ -1,8 +1,7 @@
-package ru.mipt.spring2014.class08.ui;
+ package ru.mipt.spring2014.class08.ui;
 
 import java.awt.*;
 import ru.mipt.spring2014.class08.FieldController;
-import ru.mipt.spring2014.class08.field.Ball;
 import ru.mipt.spring2014.class08.field.FieldModel;
 
 /**
@@ -25,6 +24,7 @@ public class FieldView extends javax.swing.JPanel
 		initComponents ();
 
 		new Thread (backend).start ();
+		
 	}
 
 	private void updateViewBounds ()
@@ -34,7 +34,7 @@ public class FieldView extends javax.swing.JPanel
 		if (field.getWidth () / maxWidth < field.getHeight () / maxHeight)
 		{
 			int optWidth = (int) Math.round (field.getWidth () * maxHeight / field.getHeight ());
-			viewBounds.setFrame ((maxWidth - optWidth) / 2, 0, optWidth, maxHeight);
+			viewBounds.setFrame ((maxWidth - optWidth) / 2 , 0, optWidth, maxHeight);
 		} else
 		{
 			int optHeight = (int) Math.round (field.getHeight () * maxWidth / field.getWidth ());
@@ -61,7 +61,10 @@ public class FieldView extends javax.swing.JPanel
 	{
 		return (viewBounds.getY () + viewBounds.getHeight () - y) * field.getHeight () / viewBounds.getHeight ();
 	}
-
+	public FieldController getBackend()
+	{
+		return backend;
+	}
 	private void drawBorder (Graphics2D graphics)
 	{
 		graphics.setColor (Color.BLACK);
@@ -76,15 +79,16 @@ public class FieldView extends javax.swing.JPanel
 	}
 
 	private void drawFieldState (Graphics2D graphics, FieldModel field)
-	{
-		for (Ball ball : field.getBalls ())
+	{   
+		for (ru.mipt.spring2014.class08.field.Car car : field.getCars())
 		{
-			graphics.setColor (ball.getColor ());
-			int x = getXScreenCoord (field, ball.getX () - ball.getR ());
-			int y = getYScreenCoord (field, ball.getY () + ball.getR ());
-			int width = getXScreenCoord (field, ball.getX () + ball.getR ()) - x + 1;
-			int height = getYScreenCoord (field, ball.getY () - ball.getR ()) - y + 1;
-			graphics.fillOval (x, y, width, height);
+			graphics.setColor (car.getColor ());
+			int x = getXScreenCoord (field, car.getX () - car.getWidht ());
+			int y = getYScreenCoord (field, car.getY () + car.getHeight ());
+			int width = getXScreenCoord (field, car.getX () + car.getWidht ()) - x + 1;
+			int height = getYScreenCoord (field, car.getY () - car.getHeight ()) - y + 1;
+			graphics.fillRect (x, y, width, height);
+			
 		}
 	}
 
@@ -96,15 +100,22 @@ public class FieldView extends javax.swing.JPanel
 	{
 		final Graphics2D graphics = (Graphics2D) g;
 
-		graphics.setBackground (Color.WHITE);
+		graphics.setBackground (Color.LIGHT_GRAY);
 		graphics.clearRect (0, 0, getWidth (), getHeight ());
 
 		graphics.setBackground (Color.LIGHT_GRAY);
 		graphics.clearRect (viewBounds.x, viewBounds.y, viewBounds.width + 1, viewBounds.height + 1);
-
+        
 		drawBorder (graphics);
+		graphics.drawLine (0,300, 2000, 300);
+		graphics.drawLine (0,170, 2000, 170);
+		
+	
 		
 		drawFieldState (graphics, backend.getCurrentState ());
+		graphics.setColor (Color.BLACK);
+		
+		
 	}
 
 	/**
@@ -151,17 +162,7 @@ public class FieldView extends javax.swing.JPanel
 
     private void formMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_formMouseClicked
     {//GEN-HEADEREND:event_formMouseClicked
-		final FieldModel field = backend.getCurrentState ();
-		final double x = getXFieldCoord (field, evt.getX ()), y = getYFieldCoord (field, evt.getY ());
-		System.out.println ("Hit at (" + x + ", " + y + ")");
-		final Ball ball = field.findBall (x, y);
-		if (ball != null)
-		{
-			final Ball newBall = ball.copyBase ();
-			newBall.setPosition (ball.getX (), ball.getY ());
-			newBall.setVelocity (2 * (Math.random () - 0.5), 2 * (Math.random () - 0.5));
-			backend.changeBall (newBall);
-		}
+
     }//GEN-LAST:event_formMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

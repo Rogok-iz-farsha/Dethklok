@@ -5,19 +5,27 @@
 package ru.mipt.spring2014.class08.ui;
 
 import java.awt.event.KeyEvent;
+import ru.mipt.spring2014.class08.FieldController;
+import ru.mipt.spring2014.class08.field.FieldModel;
 
 /**
  *
  * @author Andrei
  */
 public class GraphDemoWindow extends javax.swing.JFrame
-{
+{   
 	/**
 	 * Creates new form GraphDemoWindow
 	 */
 	public GraphDemoWindow ()
 	{
+		
+		
+		
+
 		initComponents ();
+
+		
 	}
 
 	/**
@@ -31,6 +39,7 @@ public class GraphDemoWindow extends javax.swing.JFrame
     {
 
         graphPanel = new FieldView ();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter()
@@ -49,18 +58,33 @@ public class GraphDemoWindow extends javax.swing.JFrame
         );
         graphPanelLayout.setVerticalGroup(
             graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGap(0, 490, Short.MAX_VALUE)
         );
+
+        jCheckBox2.setText("Светофор");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(graphPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jCheckBox2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(graphPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(graphPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addComponent(jCheckBox2))
         );
 
         pack();
@@ -92,7 +116,15 @@ public class GraphDemoWindow extends javax.swing.JFrame
 		}
 	}//GEN-LAST:event_formKeyPressed
 
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        final FieldModel field = ((FieldView)graphPanel).getBackend().getCurrentState ();
+		
+		field.setLights(jCheckBox2.isSelected ());
+		
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel graphPanel;
+    private javax.swing.JCheckBox jCheckBox2;
     // End of variables declaration//GEN-END:variables
 }

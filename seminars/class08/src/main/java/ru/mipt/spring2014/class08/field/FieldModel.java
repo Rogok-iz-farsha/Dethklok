@@ -11,18 +11,21 @@ import java.util.Collections;
 public class FieldModel
 {
 	private final double width, height;
-	private final Collection<Ball> balls;
+	private final Collection<Car> cars;
+	private boolean lights;
 
-	public FieldModel (double width, double height)
+	public FieldModel (double width, double height,boolean lights)
 	{
-		this (width, height, 16);
+		this (width, height, 16,false);
 	}
 
-	public FieldModel (double width, double height, int initialCapacity)
+	public FieldModel (double width, double height, int initialCapacity, boolean lights)
 	{
 		this.width = width;
 		this.height = height;
-		this.balls = new ArrayList<Ball> (initialCapacity);
+		this.cars = new ArrayList<Car> (initialCapacity);
+		this.lights=lights;
+		
 	}
 
 	public double getWidth ()
@@ -35,36 +38,36 @@ public class FieldModel
 		return height;
 	}
 
-	public Collection<Ball> getBalls ()
+	public Collection<Car> getCars ()
 	{
-		return Collections.unmodifiableCollection (balls);
+		return Collections.unmodifiableCollection (cars);
+	}
+	
+	public boolean getLights()
+	{
+		return lights;
+	}
+	
+	public void setLights(boolean lights)
+	{
+		this.lights=lights;
 	}
 
-	public void addNew (Ball ball)
+	public void addNew (Car car)
 	{
-		assert (ball.getId () == -1);
-		final Ball newBall = new Ball (balls.size (), ball.getR (), ball.getColor ());
-		newBall.setPosition (ball.getX (), ball.getY ());
-		newBall.setVelocity (ball.getVx (), ball.getVy ());
-		balls.add (newBall);
+		assert (car.getId () == -1);
+		final Car newCar = new Car 
+		(cars.size (), car.getHeight (),car.getWidht (),car.getColor (),car.getSpeed (),car.getAccelerationY (),car.getAccelerationX (),car.getCrashStatus());
+		newCar.setPosition (car.getX (), car.getY ());
+		newCar.setVelocity (car.getVy (),car.getVx ());
+		cars.add (newCar);
 	}
 
-	protected void put (Ball ball)
+	protected void put (Car car)
 	{
-		assert (ball.getId () == balls.size ());
-		balls.add (ball);
+		assert (car.getId () == cars.size ());
+		cars.add (car);
 	}
 
-	public Ball findBall (double x, double y)
-	{
-		for (Ball ball : balls)
-		{
-			if ((x - ball.getX ()) * (x - ball.getX ())
-					+ (y - ball.getY ()) * (y - ball.getY ()) < ball.getR () * ball.getR ())
-			{
-				return ball;
-			}
-		}
-		return null;
-	}
+	
 }
